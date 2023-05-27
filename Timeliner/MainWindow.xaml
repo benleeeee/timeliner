@@ -6,7 +6,96 @@
         xmlns:local="clr-namespace:Timeliner"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Button Width="100" Height="50" Margin="0, 10, 0, 0" Click="AddToFakeList" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top">
+                Add to list
+            </Button>
 
-    </Grid>
+            <Grid x:Name="graphGridContainer"
+                  Margin="100, 10, 0, 0"
+                  >
+                <!-- GRID DEFINITIONS-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!-- GRID DEFINITIONS-->
+
+
+                <Border
+                    Grid.Row="0" Grid.Column="0" Background="LightGray"
+                    Height="50"  HorizontalAlignment="Stretch">
+                </Border>
+
+                <Border
+                    Grid.Row="1" Grid.Column="0"
+                    BorderBrush="Black" BorderThickness="1">
+
+                    <!--<ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="Red" 
+                                      Height="10" 
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    --><!-- Define the layout and content of each child Grid here --><!--
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>-->
+
+                    <!--<ListView 
+                        Grid.Row="1" Grid.Column="0"
+                        x:Name="myListView" ItemsSource="{Binding MediaBinding}">
+
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <ContentControl Content="hi">
+                                        
+
+                                        
+                                    </ContentControl>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
+
+                    <ItemsControl ItemsSource="{Binding mediaList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Define your dynamic control or layout here -->
+                                <Grid Background="Red">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Dynamic control 1 -->
+                                    <TextBlock Grid.Row="0" Text="{Binding name}" />
+
+                                    <!-- Dynamic control 2 -->
+                                    <Button Grid.Row="1" Content="{Binding name}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style >
+                                <Setter Property="Control.Margin" Value="5" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </ItemsControl>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Window>
